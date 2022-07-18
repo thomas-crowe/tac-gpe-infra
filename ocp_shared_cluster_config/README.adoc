@@ -1,0 +1,60 @@
+= Shared Cluster Configurations
+
+This repo holds the configuration for the PT Shared Clusters.
+Currently enabled are
+
+* dev-410 (Development Cluster for OpenShift 4.10)
+* shared-410 (Production Cluster for OpenShift 4.10)
+
+Operator definitions are under `/operators`.
+Common cluster configuration is under `/cluster-configuration`.
+
+== Deploying to a new cluster
+
+. Create a deploy key for the new cluster
+.. Create a new SSH Key and make note of the public and private keys.
+.. In Github navigate to https://github.com/redhat-gpe/infra
+.. Click on *Settings*
+.. On the lift click on *Deploy Keys*
+.. Click on *Add deploy key*
+... *Title*: `argocd-shared-410` (or whatever the environment name is you are deploying to)
+... *Key*: Paste the previously created public key
+
+. Create a secret for the LDAP Bind Password:
++
+[source,sh]
+----
+oc -n openshift-config create secret generic opentlc-ldap-secret --from-literal=bindPassword="xxxxxxx"
+----
+. Log into the cluster using the `kubeadmin` user.
+. Install the *OpenShift GitOps* operator (`stable` channel).
+. Log into the OpenShift GitOps managed ArgoCD (using `kubeadmin`).
+. Set up the repository
+.. Click on *Settings* on the left.
+.. Click on *Repositories*
+.. Click on *Connect repo using SSH*
+
+* *Name*: `redhat-gpe-infra`
+* *Project*: `default`
+* *Repository URL*: `git@github.com:redhat-gpe/infra.git`
+* *SSH Private Key Data*: Paste the previously generated private key
+
+. Click *Connect*
+
+. Create a new ArgoCD Application:
+
+* *Application Name*: `cluster-configuration`
+* *Project*: `default`
+* *Sync Policy*: `Automatic`
+* *Prune Resources*: `Unchecked`
+* *Self Heal*: `Checked`
+* *Repository URL*: `git@github.com:redhat-gpe/infra.git`
+* *Revision*: `HEAD`
+* *Path*: `ocp_shared_cluster_config/environments/prod/shared-410`
+** Or whatever the environment is you are configuring
+* *Cluster URL*: `kubernetes.default.svc`
+
+* https://github.com/redhat-gpe/infra/tree/main/ocp_shared_cluster_config/environments/dev/dev-410 (for the development cluster)
+* https://github.com/redhat-gpe/infra/tree/main/ocp_shared_cluster_config/environments/prod/shared-410 (for the production cluster)
+
+. Wait until ArgoCD finishes reconciling the application.

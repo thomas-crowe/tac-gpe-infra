@@ -1,0 +1,6 @@
+Create the Bind Password secret first:
+
+[source,sh]
+----
+oc -n openshift-config create secret generic opentlc-ldap-secret --from-literal=bindPassword=xxxxxxx
+----

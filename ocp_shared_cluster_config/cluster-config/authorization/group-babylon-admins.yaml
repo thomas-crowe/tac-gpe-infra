@@ -1,0 +1,26 @@
+---
+apiVersion: user.openshift.io/v1
+kind: Group
+metadata:
+  name: babylon-admins
+users:
+- ankay-redhat.com
+- gucore-redhat.com
+- jdisrael-redhat.com
+- jkupfere-redhat.com
+- nalentor-redhat.com
+- prutledg
+- psrivast-redhat.com
+- shacharb-redhat.com
+- mamorim-redhat.com
+- agilpipp-redhat.com
+- yvarbev-redhat.com
+- wkulhane-redhat.com
+- djana-redhat.com
+- mitsharm-redhat.com
+- cbomman-redhat.com
+- jappleii-redhat.com
+- tcrowe-redhat.com
+- nstephan-redhat.com
+- klewis-redhat.com
+- cshinde-redhat.com

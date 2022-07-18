@@ -1,0 +1,11 @@
+---
+apiVersion: user.openshift.io/v1
+kind: Group
+metadata:
+  name: gpte-inra-tier-3
+users:
+- jkupfere-redhat.com
+- jappleii-redhat.com
+- tcrowe-redhat.com
+- jdisrael-redhat.com
+- privera-redhat.com

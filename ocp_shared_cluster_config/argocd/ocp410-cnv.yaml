@@ -1,0 +1,17 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: shared-410
+  namespace: openshift-gitops
+spec:
+  destination:
+    namespace: openshift-gitops
+    server: https://kubernetes.default.svc
+  project: default
+  source:
+    path: ocp_shared_cluster_config/environments/prod/ocp410-cnv
+    repoURL: https://github.com/redhat-gpe/infra
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true

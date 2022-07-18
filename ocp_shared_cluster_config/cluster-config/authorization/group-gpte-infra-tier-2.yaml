@@ -1,0 +1,17 @@
+---
+apiVersion: user.openshift.io/v1
+kind: Group
+metadata:
+  name: gpte-infra-tier-2
+users:
+- klewis-redhat.com
+- jdisrael-redhat.com
+- mmills-redhat.com
+- cbomman-redhat.com
+- djana-redhat.com
+- cshinde-redhat.com
+- klewis-redhat.com
+- nalentor-redhat.com
+- jappleii-redhat.com
+- ahshah-redhat.com
+- privera-redhat.com

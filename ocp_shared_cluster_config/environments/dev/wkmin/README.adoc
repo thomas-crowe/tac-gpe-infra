@@ -1,0 +1,5 @@
+= Cluster Description
+
+*GUID*: *wkmin*
+*Base domain*: devel.opentlc.com
+*Purpose*: Wolfgang Kulhanek Test Cluster for testing the cluster configuration

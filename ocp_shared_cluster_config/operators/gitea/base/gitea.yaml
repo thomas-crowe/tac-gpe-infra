@@ -1,0 +1,26 @@
+---
+apiVersion: gpte.opentlc.com/v1
+kind: Gitea
+metadata:
+  name: gitea
+  namespace: gitea
+  annotations:
+    argocd.argoproj.io/sync-wave: "5"
+    argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
+spec:
+  giteaAdminUser: opentlc-mgr
+  giteaAdminPasswordLength: 16
+  giteaAllowCreateOrganization: true
+  giteaCreateUsers: false
+  giteaDisableRegistration: false
+  giteaEnableCaptcha: false
+  giteaImage: quay.io/gpte-devops-automation/gitea
+  giteaImageTag: 1.16.8
+  giteaRoute: replace_with_actual_route
+  giteaSsl: true
+  giteaCpuLimit: 500m
+  giteaCpuRequest: 200m
+  giteaMemoryLimit: 2Gi
+  giteaMemoryRequest: 1Gi
+  giteaVolumeSize: 20Gi
+  postgresqlVolumeSize: 20Gi

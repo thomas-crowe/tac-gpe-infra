@@ -1,0 +1,12 @@
+---
+apiVersion: user.openshift.io/v1
+kind: Group
+metadata:
+  name: gpte-openshift-shared-cluster-admins
+users:
+- wkulhane-redhat.com
+- klewis-redhat.com
+- taraujo-redhat.com
+- psrivast-redhat.com
+- tcrowe-redhat.com
+- jkupfere-redhat.com

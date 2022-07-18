@@ -1,0 +1,27 @@
+---
+apiVersion: config.openshift.io/v1
+kind: OAuth
+metadata:
+  name: cluster
+spec:
+  identityProviders:
+  - name: OpenTLC LDAP
+    type: LDAP
+    ldap:
+      attributes:
+        email:
+        - mail
+        id:
+        - dn
+        name:
+        - cn
+        preferredUsername:
+        - uid
+      bindDN: uid=ose-mwl-auth,cn=users,cn=accounts,dc=opentlc,dc=com
+      bindPassword:
+        name: opentlc-ldap-secret
+      ca:
+        name: opentlc-ldap-ca-cert
+      insecure: false
+      url: ldaps://ipa1.opentlc.com:636/cn=users,cn=accounts,dc=opentlc,dc=com?uid?sub
+    mappingMethod: claim

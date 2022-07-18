@@ -1,0 +1,5 @@
+= Cluster Description
+
+*GUID*: *shared-410*
+*Base domain*: openshift.redhatworkshops.io
+*Purpose*: Production Shared Cluster for OpenShift 4.10
