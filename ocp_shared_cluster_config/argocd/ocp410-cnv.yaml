@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: shared-410
+  name: ocp410-cnv
   namespace: openshift-gitops
 spec:
   destination:
@@ -10,8 +10,8 @@ spec:
   project: default
   source:
     path: ocp_shared_cluster_config/environments/prod/ocp410-cnv
-    repoURL: https://github.com/redhat-gpe/infra
+    repoURL: http://github.com/thomas-crowe/tac-gpe-infra
   syncPolicy:
     automated:
-      prune: true
+      prune: false
       selfHeal: true
